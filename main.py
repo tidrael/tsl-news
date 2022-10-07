@@ -33,6 +33,7 @@ tsl_close = tsl.close_df
 tsl_close.to_csv("tsl_close.csv", index=False)
 
 train_df = news_df.merge(tsl_close, on="date", how="inner")
+print(train_df.describe(include=["category"]))
 train_df.to_csv("train.csv", index=False)
 
 test_df = train_df.sample(frac=0.1, random_state=42)

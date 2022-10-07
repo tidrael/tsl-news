@@ -89,7 +89,7 @@ class TSLNews(datasets.GeneratorBasedBuilder):
                     "close": datasets.Value("float"),
                     "pct_change": datasets.Value("float"),
                     "label": datasets.features.ClassLabel(
-                        names=["negative", "neutral", "positive"]
+                        names=["negative", "positive"]
                     ),
                 }
             ),
