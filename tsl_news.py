@@ -116,17 +116,14 @@ class TSLNews(datasets.GeneratorBasedBuilder):
             ),
         ]
 
-    def _generate_examples(self, filepath, labeled=True):
+    def _generate_examples(self, filepath):
         """Generate TSLNews examples."""
         logger.info("generating examples from = %s", filepath)
         key = 0
         label_mapping = {"negative": 0, "positive": 1}
         with open(filepath, encoding="utf-8") as f:
             for row in csv.DictReader(f):
-                if labeled:
-                    label = label_mapping[row["label"]]
-                else:
-                    label = row["label"]
+                label = label_mapping[row["label"]]
                 yield key, {
                     "title": row["title"],
                     "date": row["date"],
